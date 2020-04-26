@@ -1,19 +1,17 @@
 import express from 'express';
 import path from 'path';
 import open from 'open';
-import webpack from 'webpack';
-import config from '../webpack.config.dev';
+import compression from compression;
+
 
 /* eslint-disable no-console*/
 
 const port = 3000;
 const app = express();
-const compiler = webpack(config);
 
-app.use(require('webpack-dev-middleware')(compiler, {
-    noInfo: true,
-    publicPath: webkitConvertPointFromPageToNode.output.publicPath
-}));
+app.use(compression()); //Not for actual production scenario
+app.use(express.static('dist'));
+
 
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, '.../dist/index.html'));
