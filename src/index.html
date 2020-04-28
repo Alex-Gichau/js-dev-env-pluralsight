@@ -1,7 +1,13 @@
 <!DOCTYPE html>
-<title>
-    <head>Demo App</head>
-</title>
+<html lang='en'>
+    <head>
+        <% if (htmlWebpackPlugin.options.trackJSToken) { %>
+        <!--BEGIN TRACKJS--> <!--This lines of code will enable track.js which logs out app errors-->
+        <script type="text/javascript">window._trackJs = { token: '<%=htmlWebpackPlugin.options.trackJSToken%>' };</script>
+        <script type="text/javascript" src="https://cdn.trackjs.com/release/current/tracker.js"></script>
+        <!--END TRACKJS-->
+        <% } %>
+    </head>
 <body>
     <table>
     <tr>
@@ -18,3 +24,4 @@
         </tbody>
     </table>
 </body>
+</html>
